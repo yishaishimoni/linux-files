@@ -1,0 +1,4 @@
+setenv SHELL /bin/bash 
+setenv COLUMNS auto
+exec /bin/bash
+
