@@ -45,7 +45,7 @@
 # When changing directory small typos can be ignored by bash
 # for example, cd /vr/lgo/apaache would find /var/log/apache
 # shopt -s cdspell
-export COLUMNS=auto
+# export COLUMNS=auto
 
 # Completion options
 #
@@ -221,4 +221,4 @@ cd_func ()
 }
 
 alias cd=cd_func
-
+export COLUMNS=AUTO
