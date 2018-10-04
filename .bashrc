@@ -73,7 +73,7 @@
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
 # export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
-export HISTIGNORE=$'[ \t\.]*:&:[fb]g:exit:ls:logout' # Ignore the ls command as well
+export HISTIGNORE=$'[ \t]*:?:??:???:&:history:exit:logout' # Ignore the ls command as well
 #
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
@@ -118,7 +118,7 @@ alias df='df -h'
 alias du='du -h'
 #
 # Misc :)
-alias less='less -rSW'                     # raw control characters, no line-wrap, and highlight new lines on page-down
+alias less='less -SW'                      # no line-wrap, and highlight new lines on page-down
 # alias whence='type -a'                   # where, of a sort
 alias grep='grep --color'                  # show differences in colour
 # alias egrep='egrep --color=auto'         # show differences in colour
@@ -144,7 +144,7 @@ alias path_python2='export PATH=$(echo $PATH| sed s/anaconda3/anaconda2/g)'
 #
 # /etc/profile sets 022, removing write perms to group + others.
 # Set a more restrictive umask: i.e. no exec perms for others:
-umask 027
+umask 007
 # Paranoid: neither group nor others have any perms:
 # umask 077
 
