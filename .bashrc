@@ -104,7 +104,6 @@ white="\[\e[0;39m\]"
 PS1="$magenta<$boldmagenta\$?|\!$magenta>$green\h:$lightblue\w$yellow\$ $white"
 PROMPT_DIRTRIM=4
 #
-export PATH=/gpfs/haifa/projects/a/anaconda/anaconda2/bin:$PATH
 # make sure the path does not have duplicates but keep the order the same (unlike using sort|uniq)
 PATH=$(echo $PATH | tr ':' '\n' | awk '$1=="" {next} !($1 in a) {a[$1];print}' | tr '\n' ':')
 #
@@ -137,8 +136,6 @@ alias ll='ls -l'                              # long list
 alias l.='ls -d .*'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias path_python3='export PATH=$(echo $PATH| sed s/anaconda2/anaconda3/g)'
-alias path_python2='export PATH=$(echo $PATH| sed s/anaconda3/anaconda2/g)'
 
 # Umask
 #
