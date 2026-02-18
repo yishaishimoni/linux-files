@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "charliermarsh.ruff",
+    "ms-python.black-formatter",
+
+    "njpwerner.autodocstring",
+
+    "tamasfe.even-better-toml",
+    "redhat.vscode-yaml",
+    "yzhang.markdown-all-in-one",
+
+    "streetsidesoftware.code-spell-checker",
+
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+
+    "mechatroner.rainbow-csv",
+    "johnpapa.vscode-peacock",
+    "oderwat.indent-rainbow"
+  ]
+}

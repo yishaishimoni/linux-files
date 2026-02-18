@@ -1,0 +1,39 @@
+line-length = 120
+
+[lint]
+select = ["E", "F", "W", "B", "I", "C90", "UP", "SIM", "N", "ANN", "D", "ARG", "RUF"]
+
+# Black compatibility and more
+ignore = [
+    "D203",  # conflicts with D211; Black prefers no blank line before class docstring
+    "D212",  # conflicts with D212; choose one convention
+    "D205",  # allow docstring without a summary line
+    "D415",  # Too restrictive: First line should end with a period, question mark, or exclamation point
+    "ANN20",  # allows missing return type annotation for functions
+    "ANN001",  # allow missing type hint for public function
+    "B905",  # allow zip() to be called without the strict= parameter
+    "E501",  # line too long, black is supposed to handle this so don't complain
+]
+
+# If you want to pick a docstring style explicitly (recommended):
+[lint.pydocstyle]
+convention = "google"  # or "numpy", "pep257"
+
+
+[lint.per-file-ignores]
+# For all notebooks
+"**/*.ipynb" = [
+    # Common notebook relaxations:
+    "D",     # all docstring rules
+    "ANN",   # type-annotation rules
+    "ARG",   # unused-arguments (often noisy in exploratory code)
+    "C90",   # complexity (mccabe)
+    "SIM",   # simplify suggestions (often low-value in notebooks)
+    "N",     # naming conventions (variables in cells are often ad-hoc)
+    "RUF059", # Unpacked variable is never used
+    # Add/remove codes to taste
+]
+"**/__init__.py" = [
+    "D104",  # missing docstring in public module
+    "F401",  # unused import are ok in __init__ file 
+]
