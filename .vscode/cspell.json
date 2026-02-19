@@ -1,0 +1,58 @@
+{
+  "version": "0.2",
+  "words": [
+    "ansatz",
+    "ansatze",
+    "bitstrings",
+    "coeff",
+    "coeffs",
+    "eigensolvers",
+    "ising",
+    "maxcut",
+    "paulis",
+    "QAOA",
+    "qiskit",
+    "qubit",
+    "qubits",
+    "qubo",
+    "watsonx"
+  ],
+  "ignoreWords": [
+    "CNOT",
+    "COBYLA",
+    "CPLEX",
+    "BFGS",
+    "docplex",
+    "fval",
+    "Isrl",
+    "ivqagf",
+    "vqagf",
+    "linalg",
+    "linestyle",
+    "mcolors",
+    "MDKP",
+    "mkpdata",
+    "MKPIVQAGF",
+    "nelder",
+    "nfev",
+    "pytest",
+    "venv",
+    "VQAGF",
+    "SPSA",
+    "statevector",
+    "QAOAQUBO",
+    "QOBLIB",
+    "xlabel",
+    "ylabel"
+  ],
+  "ignorePaths": [
+    "pyproject.toml"
+  ],
+  "ignoreRegExpList": [
+    "\\.\\b[A-Za-z_][A-Za-z0-9_]*\\b",
+    "[\\(,]+\\s*\\b[A-Za-z_][A-Za-z0-9_\\.]*\\b\\s*[=]+",
+    "from\\s+\\b[A-Za-z_\\.]+\\b",
+    "import\\s+\\b[A-Za-z_\\.,]+\\b"
+  ]
+
+}
