@@ -44,8 +44,8 @@
 #
 # When changing directory small typos can be ignored by bash
 # for example, cd /vr/lgo/apaache would find /var/log/apache
-# shopt -s cdspell
-# export COLUMNS=auto
+shopt -s cdspell
+export COLUMNS=auto
 
 # Completion options
 #
@@ -104,6 +104,7 @@ white="\[\e[0;39m\]"
 PS1="$magenta<$boldmagenta\$?|\!$magenta>$green\h:$lightblue\w$yellow\$ $white"
 PROMPT_DIRTRIM=4
 #
+export PATH=/gpfs/haifa/projects/a/anaconda/anaconda2/bin:$PATH
 # make sure the path does not have duplicates but keep the order the same (unlike using sort|uniq)
 PATH=$(echo $PATH | tr ':' '\n' | awk '$1=="" {next} !($1 in a) {a[$1];print}' | tr '\n' ':')
 #
@@ -126,7 +127,10 @@ alias tawk="awk -F'\t' -v OFS='\t'"        # run awk with tabs in input and outp
 alias path='echo $PATH|tr : "\n"'          # display the path as a list of dirs
 #
 # Some shortcuts for different directory listings
-LS_COLORS='no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=01;40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:*.tiff=00;35:*.txt=00;33:*README*=00;33:*.m=01;36:*.mat=01;36:'
+# Load LS_COLORS configuration
+if [[ -f ~/.bash_ls_colors ]]; then
+  source ~/.bash_ls_colors
+fi
 alias ls='ls -hF --color=tty'                 # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
@@ -136,6 +140,8 @@ alias ll='ls -l'                              # long list
 alias l.='ls -d .*'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias path_python3='export PATH=$(echo $PATH| sed s/anaconda2/anaconda3/g)'
+alias path_python2='export PATH=$(echo $PATH| sed s/anaconda3/anaconda2/g)'
 
 # Umask
 #
@@ -218,4 +224,5 @@ cd_func ()
 }
 
 alias cd=cd_func
-export COLUMNS=AUTO
+
+. "$HOME/.local/bin/env"

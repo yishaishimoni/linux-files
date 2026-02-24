@@ -1,0 +1,168 @@
+# ~/.config/ls_colors.sh
+#
+# Human-readable LS_COLORS configuration
+# - Built incrementally with LS_COLORS+=
+# - Grouped by color
+# - Each color section defines a single variable used by that section
+#   -> changing a scheme is mostly changing these variables
+#
+# Source from ~/.bashrc:
+#   [[ -f ~/.config/ls_colors.sh ]] && source ~/.config/ls_colors.sh
+
+# ============================================================
+# LS_COLORS key legend (GNU ls / dircolors)
+#
+# no  = normal (global default)
+# fi  = regular file
+# di  = directory
+# ln  = symbolic link
+# pi  = FIFO / named pipe
+# so  = socket
+# bd  = block device
+# cd  = character device
+# or  = orphan (broken) symlink
+# mi  = missing file (symlink target missing)
+# ex  = executable file
+# ow  = other writable (folder with write permission by all)
+# tw  = sticky + ow
+#
+# *.ext = file extension match
+# ============================================================
+
+#    ISO/IEC 6429 color sequences are composed of sequences of numbers separated by semicolons.
+#    The most common codes are:
+#            0   to restore default color
+#            1   for brighter colors
+#            4   for underlined text
+#            5   for flashing text
+#           30   for black foreground
+#           31   for red foreground
+#           32   for green foreground
+#           33   for yellow (or brown) foreground
+#           34   for blue foreground
+#           35   for purple foreground
+#           36   for cyan foreground
+#           37   for white (or gray) foreground
+#           40   for black background
+#           41   for red background
+#           42   for green background
+#           43   for yellow (or brown) background
+#           44   for blue background
+#           45   for purple background
+#           46   for cyan background
+#           47   for white (or gray) background -->
+
+# defaults that we don't change
+# ow = 34;42;
+# tw = 30;42:
+
+# Only apply in interactive shells
+[[ $- != *i* ]] && return
+
+# Start clean
+LS_COLORS=""
+# Default / unstyled (00 = reset/normal)
+c_default="00"
+LS_COLORS+="no=${c_default}:"   # global default
+LS_COLORS+="fi=${c_default}:"   # regular files
+
+# Blue - directories & structural navigation
+c_dir="01;34"
+c_symlink="36"                  # cyan foreground
+LS_COLORS+="di=${c_dir}:"        # directories
+LS_COLORS+="ln=${c_symlink}:"    # symlinks
+
+# Green - executables & runnable scripts
+c_exec="01;32"
+LS_COLORS+="ex=${c_exec}:"       # executables
+# common script types
+LS_COLORS+="*.sh=${c_exec}:"
+LS_COLORS+="*.bash=${c_exec}:"
+LS_COLORS+="*.zsh=${c_exec}:"
+LS_COLORS+="*.csh=${c_exec}:"
+LS_COLORS+="*.cmd=${c_exec}:"
+LS_COLORS+="*.exe=${c_exec}:"
+LS_COLORS+="*.com=${c_exec}:"
+LS_COLORS+="*.bat=${c_exec}:"
+
+# Orange - programming & source code files
+c_code="01;33"
+LS_COLORS+="*.c=${c_code}:"
+LS_COLORS+="*.h=${c_code}:"
+LS_COLORS+="*.cpp=${c_code}:"
+LS_COLORS+="*.hpp=${c_code}:"
+LS_COLORS+="*.cc=${c_code}:"
+LS_COLORS+="*.py=${c_code}:"
+LS_COLORS+="*.ipynb=${c_code}:"
+LS_COLORS+="*.js=${c_code}:"
+LS_COLORS+="*.ts=${c_code}:"
+LS_COLORS+="*.java=${c_code}:"
+LS_COLORS+="*.go=${c_code}:"
+LS_COLORS+="*.rs=${c_code}:"
+LS_COLORS+="*.rb=${c_code}:"
+LS_COLORS+="*.php=${c_code}:"
+LS_COLORS+="*.scala=${c_code}:"
+LS_COLORS+="*.jl=${c_code}:"
+# (Optional) common config-ish code formats
+LS_COLORS+="*.json=${c_code}:"
+LS_COLORS+="*.yaml=${c_code}:"
+LS_COLORS+="*.yml=${c_code}:"
+LS_COLORS+="*.toml=${c_code}:"
+LS_COLORS+="*.ini=${c_code}:"
+
+# Red - archives & compressed files
+c_archive="31"
+LS_COLORS+="*.tar=${c_archive}:"
+LS_COLORS+="*.tgz=${c_archive}:"
+LS_COLORS+="*.taz=${c_archive}:"
+LS_COLORS+="*.gz=${c_archive}:"
+LS_COLORS+="*.bz=${c_archive}:"
+LS_COLORS+="*.bz2=${c_archive}:"
+LS_COLORS+="*.xz=${c_archive}:"
+LS_COLORS+="*.zip=${c_archive}:"
+LS_COLORS+="*.z=${c_archive}:"
+LS_COLORS+="*.Z=${c_archive}:"
+LS_COLORS+="*.rpm=${c_archive}:"
+LS_COLORS+="*.cpio=${c_archive}:"
+
+# Magenta - images & visual assets
+c_image="35"
+LS_COLORS+="*.jpg=${c_image}:"
+LS_COLORS+="*.jpeg=${c_image}:"
+LS_COLORS+="*.png=${c_image}:"
+LS_COLORS+="*.gif=${c_image}:"
+LS_COLORS+="*.bmp=${c_image}:"
+LS_COLORS+="*.tif=${c_image}:"
+LS_COLORS+="*.tiff=${c_image}:"
+LS_COLORS+="*.xpm=${c_image}:"
+LS_COLORS+="*.xbm=${c_image}:"
+LS_COLORS+="*.svg=${c_image}:"
+
+# Yellow - text & documentation
+c_doc="33"
+LS_COLORS+="*.txt=${c_doc}:"
+LS_COLORS+="*.md=${c_doc}:"
+LS_COLORS+="*.rst=${c_doc}:"
+LS_COLORS+="*.doc=${c_doc}:"
+LS_COLORS+="*.docx=${c_doc}:"
+LS_COLORS+="*README*=${c_doc}:"
+
+# ------------------------------------------------------------
+# IPC / runtime objects (special file types)
+# FIFO/pipe = pi, socket = so
+# ------------------------------------------------------------
+c_fifo="04;33"      # FIFO in yellow/orange
+c_socket="04;35"    # sockets in magenta (common convention)
+LS_COLORS+="pi=${c_fifo}:"
+LS_COLORS+="so=${c_socket}:"
+
+# ------------------------------------------------------------
+# Error / broken states
+# ------------------------------------------------------------
+c_error="01;05;31"
+LS_COLORS+="or=${c_error}:"   # broken symlink
+LS_COLORS+="mi=${c_error}:"   # missing file
+
+# Export once, at the end
+export LS_COLORS
+
