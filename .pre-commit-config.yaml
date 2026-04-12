@@ -36,25 +36,35 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-ast
-      - id: fix-byte-order-marker
+      - id: check-builtin-literals
       - id: check-case-conflict
-      - id: check-docstring-first
       - id: check-executables-have-shebangs
+      - id: check-illegal-windows-names
       - id: check-json
-      - id: check-yaml
+      - id: check-merge-conflict
+        args: [--assume-in-merge]
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
       - id: check-toml
+      - id: check-xml
+      - id: check-yaml
       - id: debug-statements
       - id: detect-private-key
+      - id: double-quote-string-fixer
       - id: end-of-file-fixer
-      - id: trailing-whitespace
+      - id: fix-byte-order-marker
       - id: mixed-line-ending
+      - id: name-tests-test
+      - id: pretty-format-json
+        args: [--autofix]
+      - id: trailing-whitespace
 
   # format docstrings 
   - repo: https://github.com/PyCQA/docformatter
     rev: v1.7.5
     hooks:
       - id: docformatter
-        args: [--in-place, --black, --in-place, --close-quotes-on-newline, --pre-summary-newline]
+        args: [--in-place, --black, --close-quotes-on-newline, --pre-summary-newline]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
