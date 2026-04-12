@@ -59,16 +59,16 @@ repos:
         args: [--autofix]
       - id: trailing-whitespace
 
-  # format docstrings 
+  # format docstrings
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.5
+    rev: v1.7.7
     hooks:
       - id: docformatter
         args: [--in-place, --black, --close-quotes-on-newline, --pre-summary-newline]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.14.3
+    rev: v0.15.10
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
@@ -76,6 +76,6 @@ repos:
 
   # black: automatic pep8 compliance code formatting
   - repo: https://github.com/psf/black
-    rev: 25.9.0
+    rev: 26.3.1
     hooks:
       - id: black
